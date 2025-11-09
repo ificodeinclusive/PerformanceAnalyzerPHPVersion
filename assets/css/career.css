@@ -1,0 +1,80 @@
+/* Career Page — Modern, Professional Design */
+.page-wrap { max-width: 1000px; margin: 22px auto; padding: 0 16px; }
+
+/* Hero banner */
+.career-hero {
+  display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 24px;
+  background: linear-gradient(180deg, #f1fbf8 0%, #ffffff 100%);
+  border: 1px solid #d8efeb; border-radius: 16px; box-shadow: var(--shadow);
+  padding: 22px; margin-bottom: 16px; position: relative; overflow: hidden;
+}
+.career-hero-content { position: relative; z-index: 1; }
+.career-eyebrow { color: var(--accent-dark); font-weight: 600; letter-spacing: 0.3px; text-transform: uppercase; font-size: 12px; margin-bottom: 6px; }
+.career-title { margin: 0; font-size: 28px; color: var(--text); letter-spacing: -0.2px; }
+.career-subtitle { margin: 6px 0 12px; color: var(--muted); }
+.career-badges { display: flex; flex-wrap: wrap; gap: 10px; }
+.chip { display: inline-flex; align-items: center; gap: 8px; padding: 6px 10px; border-radius: 999px; background: #f6fbfa; border: 1px solid #e0f3ef; color: var(--text); font-weight: 600; }
+.chip-primary { background: #e6f9f5; border-color: #bfeee4; color: var(--accent-dark); }
+.chip-muted { background: #f9fcfb; }
+
+.career-hero-visual { position: relative; min-height: 140px; border-left: 1px solid #e5f2ef; }
+.career-blob { position: absolute; width: 220px; height: 220px; right: -36px; top: -60px; border-radius: 50%; background: radial-gradient(circle at 30% 30%, rgba(45,179,163,0.25), rgba(45,179,163,0.08) 60%, rgba(45,179,163,0.0) 70%); filter: blur(2px); }
+.career-ring { position: absolute; width: 160px; height: 160px; right: 24px; bottom: -28px; border-radius: 50%; background: conic-gradient(from 140deg, rgba(45,179,163,0.15), rgba(45,179,163,0.0) 45%, rgba(91,192,235,0.15) 55%, rgba(91,192,235,0.0) 85%); }
+.career-card-mini { position: absolute; right: 20px; top: 18px; background: rgba(255,255,255,0.88); backdrop-filter: blur(6px); border: 1px solid #e7f3f0; border-radius: 12px; padding: 10px 12px; box-shadow: var(--shadow); }
+.mini-title { font-weight: 600; color: var(--accent-dark); }
+.mini-sub { font-size: 12px; color: var(--muted); }
+
+/* Career grid */
+.career-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.career-card { background: var(--card); border: 1px solid #e7f3f0; border-radius: 14px; padding: 16px; box-shadow: var(--shadow); transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease; }
+.career-card:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(45, 179, 163, 0.18); border-color: #d6ede9; }
+.card-head { display: grid; grid-template-columns: auto 1fr; gap: 10px; align-items: center; margin-bottom: 6px; }
+.career-icon { width: 32px; height: 32px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; background: rgba(45, 179, 163, 0.12); color: var(--accent-dark); }
+.career-icon svg { width: 20px; height: 20px; }
+.career-field { font-weight: 700; color: var(--accent-dark); margin-bottom: 6px; }
+.career-desc { color: var(--text); }
+.no-results { background: #fff7f7; border: 1px solid #ffdede; color: #b45454; border-radius: 12px; padding: 12px; grid-column: 1 / -1; }
+
+/* Subject selector */
+.subject-selector { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.subject-tile { display: grid; gap: 4px; align-content: start; text-decoration: none; background: linear-gradient(180deg, #ffffff 0%, #fbfefd 100%); border: 1px solid #e5f2ef; border-radius: 12px; padding: 12px; box-shadow: 0 6px 18px rgba(45, 179, 163, 0.12); color: var(--text); transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease; }
+.subject-tile:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(45, 179, 163, 0.18); border-color: #d6ede9; }
+.tile-title { font-weight: 700; color: var(--accent-dark); }
+.tile-sub { font-size: 12px; color: var(--muted); }
+.tip-banner { margin-top: 12px; background: #eef8f6; border: 1px solid #d8efeb; border-radius: 12px; padding: 10px 12px; color: var(--muted); }
+
+/* Subject tint variants */
+.subject-math { border-left: 4px solid #2DB3A3; }
+.subject-science { border-left: 4px solid #5BC0EB; }
+.subject-english { border-left: 4px solid #F59E0B; }
+.subject-computer { border-left: 4px solid #9B5DE5; }
+
+@media (max-width: 900px) {
+  .career-hero { grid-template-columns: 1fr; }
+  .career-hero-visual { border-left: none; min-height: 120px; }
+  .career-grid { grid-template-columns: 1fr; }
+  .subject-selector { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 520px) {
+  .subject-selector { grid-template-columns: 1fr; }
+}
+
+/* Toolbar and pagination */
+.career-toolbar { max-width: 1000px; margin: 0 auto 12px; }
+.toolbar-form { background: var(--card); border: 1px solid #e7f3f0; border-radius: 14px; padding: 12px; box-shadow: var(--shadow); display: grid; grid-template-columns: 1fr 1.4fr auto; gap: 12px; align-items: end; }
+.toolbar-form label { display: grid; gap: 6px; }
+.toolbar-label { font-size: 12px; color: var(--muted); }
+.toolbar-form select, .toolbar-form input[type="text"] { width: 100%; padding: 10px 12px; border: 1px solid #d8efeb; border-radius: 12px; background: #f9fefe; color: var(--text); outline: none; }
+.toolbar-form select:focus, .toolbar-form input[type="text"]:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(45,179,163,0.15); }
+
+.pagination { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 12px; max-width: 1000px; margin: 10px auto 0; }
+.page-count { color: var(--muted); }
+.pager-actions { display: inline-flex; gap: 10px; }
+.pager-link { display: inline-block; padding: 6px 12px; border-radius: 20px; background: #f6fbfa; border: 1px solid #e0f3ef; color: var(--accent-dark); text-decoration: none; font-weight: 600; }
+.pager-link:hover { background: #eaf7f4; }
+.pager-link.disabled { opacity: 0.6; pointer-events: none; }
+
+/* Smart recommendation box */
+.recommendation-box { max-width: 1000px; margin: 10px auto 12px; background: #f9fcfb; border: 1px solid #e7f3f0; border-radius: 14px; padding: 12px; box-shadow: var(--shadow); }
+.rec-title { font-weight: 700; color: var(--accent-dark); margin-bottom: 6px; }
+.rec-text { color: var(--text); }

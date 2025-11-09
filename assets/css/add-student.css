@@ -1,0 +1,45 @@
+/* Add Student Page – isolated styles */
+:root {
+  --accent: #2DB3A3;
+  --accent-dark: #23897E;
+  --bg: #f6fbfa;
+  --card: #ffffff;
+  --text: #2b3a3a;
+  --muted: #6b7a7a;
+  --shadow: 0 6px 20px rgba(45, 179, 163, 0.15);
+}
+
+/* Form container */
+.form-wrap { max-width: 1000px; margin: 8px auto 18px; padding: 0 8px; }
+.form-card { background: var(--card); border: 1px solid #e0f3ef; border-radius: 14px; padding: 16px; box-shadow: var(--shadow); }
+
+/* Grid and fields */
+.form-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+.form-field label { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; color: var(--text); margin-bottom: 6px; }
+.label-icon { display: inline-flex; width: 18px; height: 18px; color: var(--accent-dark); }
+.label-icon svg { width: 100%; height: 100%; }
+.input { width: 100%; padding: 10px 12px; border-radius: 10px; border: 1px solid #d8efeb; background: #fdfefe; color: var(--text); outline: none; transition: border 0.15s ease, box-shadow 0.15s ease; }
+.input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(45,179,163,0.12); }
+
+/* Summary */
+.form-summary { margin-top: 10px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; justify-content: center; }
+.summary-pill { display: inline-flex; align-items: center; gap: 6px; padding: 6px 10px; border-radius: 999px; background: #f6fbfa; border: 1px solid #e0f3ef; color: var(--text); font-weight: 600; }
+.grade-chip { display: inline-block; padding: 2px 8px; border-radius: 999px; font-weight: 700; color: #fff; }
+.grade-a { background: #2DB3A3; }
+.grade-b { background: #5BC0EB; }
+.grade-c { background: #FFE66D; color: #2b3a3a; }
+.grade-d { background: #F59E0B; }
+.grade-f { background: #EF4444; }
+
+/* Actions */
+.form-actions { margin-top: 12px; display: flex; align-items: center; justify-content: center; gap: 12px; }
+
+/* Banners */
+.success-banner, .error-banner { max-width: 1000px; margin: 0 auto 12px; border-radius: 12px; padding: 10px 12px; display: inline-flex; align-items: center; gap: 8px; box-shadow: var(--shadow); }
+.success-banner { background: #eaf7f4; border: 1px solid #d8efeb; color: #2DB3A3; }
+.error-banner { background: #fff5f5; border: 1px solid #fde2e2; color: #EF4444; }
+.banner-icon { display: inline-flex; width: 18px; height: 18px; color: currentColor; }
+.banner-icon svg { width: 100%; height: 100%; }
+
+/* Responsive */
+@media (max-width: 900px) { .form-grid { grid-template-columns: 1fr; } }

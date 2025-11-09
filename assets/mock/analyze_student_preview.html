@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Preview · Student Subject Breakdown</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <header class="app-header">
+    <div class="brand"><span class="brand-icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24" width="20" height="20" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 3l9 4-9 4-9-4 9-4z"></path>
+        <path d="M7 10v3a5 5 0 0010 0v-3"></path>
+        <path d="M19 8v6"></path>
+      </svg>
+    </span> Smart Student Analyzer</div>
+  </header>
+  <section class="page-wrap">
+    <section class="charts-grid">
+      <div class="chart-card chart-card--split">
+        <div class="chart-title"><span class="title-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="22" height="22" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="4" width="18" height="14" rx="2"></rect><path d="M7 8h6M7 12h10"></path>
+          </svg>
+        </span> Student Subject Breakdown (Preview)</div>
+        <div class="student-controls" style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+          <label for="studentSelect" style="font-weight:600;color:#1f3c35;">Select Student</label>
+          <select id="studentSelect" style="padding:8px 10px;border:1px solid #e7f3f0;border-radius:10px;background:#f9fefe;">
+            <option value="1">Aarav Sharma</option>
+            <option value="2">Priya Singh</option>
+            <option value="3">Rahul Verma</option>
+          </select>
+        </div>
+        <div class="student-charts" style="display:flex;gap:14px;flex-wrap:wrap;align-items:flex-start;">
+          <div style="flex:1;min-width:280px;"><canvas id="studentBarChart"></canvas></div>
+          <div style="flex:1;min-width:280px;"><canvas id="studentPieChart"></canvas></div>
+        </div>
+      </div>
+    </section>
+  </section>
+
+  <footer class="app-footer">© 2025 iFiCode Inclusive Pvt. Ltd.</footer>
+
+  <script>
+    const subLabels = ['Math','Science','English','Computer'];
+    const sampleData = [
+      { id: 1, name: 'Aarav Sharma', math: 85, science: 78, english: 72, computer: 90 },
+      { id: 2, name: 'Priya Singh', math: 92, science: 88, english: 79, computer: 84 },
+      { id: 3, name: 'Rahul Verma', math: 70, science: 75, english: 68, computer: 80 }
+    ];
+    const studentSelect = document.getElementById('studentSelect');
+    const sbCtx = document.getElementById('studentBarChart');
+    const spCtx = document.getElementById('studentPieChart');
+    function getStudentById(id) { return sampleData.find(s => String(s.id) === String(id)); }
+    function marksArray(s) { return [s.math, s.science, s.english, s.computer]; }
+    let studentBar = null, studentPie = null;
+    function renderStudentCharts(stu) {
+      const marks = marksArray(stu);
+      if (!studentBar) {
+        studentBar = new Chart(sbCtx, {
+          type: 'bar',
+          data: { labels: subLabels, datasets: [{ label: stu.name + ' — Marks', data: marks, backgroundColor: ['#2DB3A3','#36CFC9','#4FD1C5','#6EE7D2'], borderRadius: 8 }] },
+          options: { responsive: true, scales: { y: { beginAtZero: true, max: 100 } }, plugins: { legend: { display: false } } }
+        });
+      } else { studentBar.data.datasets[0].label = stu.name + ' — Marks'; studentBar.data.datasets[0].data = marks; studentBar.update(); }
+      if (!studentPie) {
+        studentPie = new Chart(spCtx, {
+          type: 'pie',
+          data: { labels: subLabels, datasets: [{ data: marks, backgroundColor: ['#2DB3A3','#5BC0EB','#FFE66D','#F59E0B'] }] },
+          options: { responsive: true, plugins: { legend: { position: 'bottom' } } }
+        });
+      } else { studentPie.data.datasets[0].data = marks; studentPie.update(); }
+    }
+    const initialStu = getStudentById(studentSelect.value);
+    renderStudentCharts(initialStu);
+    studentSelect.addEventListener('change', () => { renderStudentCharts(getStudentById(studentSelect.value)); });
+  </script>
+</body>
+</html>
