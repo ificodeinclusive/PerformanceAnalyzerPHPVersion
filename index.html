@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Redirecting…</title>
+  <!-- Meta refresh fallback -->
+  <meta http-equiv="refresh" content="0; url=index.php" />
+  <link rel="canonical" href="index.php" />
+  <meta name="robots" content="noindex" />
+  <style>
+    :root { --bg: #f7faf9; --text: #1f3c35; --muted: #6b7f7a; --brand: #2DB3A3; --border: #e7f3f0; }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body { margin: 0; display: flex; align-items: center; justify-content: center; background: var(--bg); color: var(--text); font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji"; }
+    .card { background: #fff; border: 1px solid var(--border); padding: 24px 28px; border-radius: 14px; box-shadow: 0 8px 30px rgba(31,60,53,.08); text-align: center; max-width: 420px; }
+    .spinner { width: 20px; height: 20px; border: 3px solid var(--border); border-top-color: var(--brand); border-radius: 50%; animation: spin .8s linear infinite; margin: 0 auto 12px; }
+    .hint { color: var(--muted); font-size: 14px; }
+    a { color: #13856e; text-decoration: none; font-weight: 600; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+  </style>
+  <script>
+    (function() {
+      // Redirect to PHP index, preserving query string and hash
+      var target = 'index.php';
+      var qs = window.location.search || '';
+      var hash = window.location.hash || '';
+      try {
+        window.location.replace(target + qs + hash);
+      } catch (e) {
+        window.location.href = target + qs + hash;
+      }
+    })();
+  </script>
+</head>
+<body>
+  <div class="card" role="status" aria-live="polite">
+    <div class="spinner" aria-hidden="true"></div>
+    <h1 style="margin:0 0 8px">Redirecting…</h1>
+    <p class="hint">If you are not redirected automatically, use the link below.</p>
+    <p style="margin:14px 0 0"><a href="index.php">Go to PHP Home</a></p>
+  </div>
+  <!-- Note: GitHub Pages does not run PHP. This file simply forwards to a PHP-capable host. -->
+  <!-- To redirect to an external server, replace href/target with your absolute URL. -->
+  <!-- Example: https://your-domain.com/index.php -->
+</body>
+</html>
